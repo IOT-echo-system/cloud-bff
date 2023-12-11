@@ -7,7 +7,7 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project:[ './tsconfig.json', './tsconfig.test.json'],
+    project: ['./tsconfig.json', './tsconfig.test.json'],
     tsconfigRootDir: './'
   },
   root: true,
@@ -128,11 +128,33 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.spec.{ts,tsx}'],
+      files: ['*.spec.ts'],
       rules: {
         'max-len': 'warn',
         '@typescript-eslint/no-magic-numbers': 'off',
-        'max-statements': 'off'
+        'max-statements': 'off',
+        '@typescript-eslint/unbound-method': 'off'
+      }
+    },
+    {
+      files: ['test/config.spec.ts'],
+      rules: {
+        'max-len': 'off',
+        '@typescript-eslint/no-magic-numbers': 'off',
+        'max-statements': 'off',
+        '@typescript-eslint/unbound-method': 'off',
+        'no-process-env': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off',
+        'global-require': 'off',
+        '@typescript-eslint/no-require-imports': 'off',
+        '@typescript-eslint/no-var-requires': 'off',
+        '@typescript-eslint/no-unsafe-member-access': 'off'
+      }
+    },
+    {
+      files: ['index.ts', 'src/config.ts'],
+      rules: {
+        'no-process-env': 'off'
       }
     }
   ]
