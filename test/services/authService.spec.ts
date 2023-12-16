@@ -13,7 +13,7 @@ describe('Auth Service', () => {
 
     expect(WebClient.post).toHaveBeenCalledTimes(1)
     expect(WebClient.post).toHaveBeenCalledWith({
-      baseUrl: 'http://auth-service:9001',
+      baseUrl: 'http://api-gateway:9100',
       body: { username: 'username' },
       path: '/auth/sign-up'
     })
@@ -26,7 +26,7 @@ describe('Auth Service', () => {
 
     expect(WebClient.post).toHaveBeenCalledTimes(1)
     expect(WebClient.post).toHaveBeenCalledWith({
-      baseUrl: 'http://auth-service:9001',
+      baseUrl: 'http://api-gateway:9100',
       body: { username: 'username' },
       path: '/auth/login'
     })

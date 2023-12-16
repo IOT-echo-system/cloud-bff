@@ -1,5 +1,5 @@
 export const Config = {
-  AUTH_SERVICE_BASE_URL: process.env.AUTH_SERVICE_BASE_URL ?? 'http://auth-service:9001',
+  API_GATEWAY_BASE_URL: process.env.API_GATEWAY_BASE_URL ?? 'http://api-gateway:9100',
   SIGN_UP_PATH: '/auth/sign-up',
   LOGIN_PATH: '/auth/login'
 } as const
