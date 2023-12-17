@@ -1,21 +1,26 @@
-import type { Document } from '../typing'
-import WebClient from 'web-client-starter'
-import { Config } from '../config'
+import { apiConfig } from '../config/apiConfig'
+import type { LoginApiResponse, SignUpApiResponse } from '../typing/auth'
+import type { Request } from 'express'
+import WebClient from './webClient'
 
-export class AuthService {
-  signUp(userData: Document): Promise<Document> {
-    return WebClient.post<Document>({
-      baseUrl: Config.API_GATEWAY_BASE_URL,
-      path: Config.SIGN_UP_PATH,
-      body: userData
+const authConfig = apiConfig.auth
+
+export const authService = {
+  signUp(request: Request): Promise<SignUpApiResponse> {
+    return WebClient.post<SignUpApiResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.signUp,
+      body: request.body as Record<string, unknown>,
+      headers: request.headers as Record<string, string>
+    })
+  },
+
+  login(request: Request): Promise<LoginApiResponse> {
+    return WebClient.post<LoginApiResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.login,
+      body: request.body as Record<string, unknown>,
+      headers: request.headers as Record<string, string>
     })
   }
-
-  login(userCredentials: Document): Promise<Document> {
-    return WebClient.post<Document>({
-      baseUrl: Config.API_GATEWAY_BASE_URL,
-      path: Config.LOGIN_PATH,
-      body: userCredentials
-    })
-  }
-}
+} as const

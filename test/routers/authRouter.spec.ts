@@ -1,30 +1,67 @@
 import supertest from 'supertest'
-import { authController } from '../../src/routers/controller'
 import app from '../../src/app'
+import webClient from '../../src/services/webClient'
 
-jest.mock('../../src/routers/controller')
+jest.mock('web-client-starter')
 describe('Auth Router', () => {
-  it('should test for post sign up api', async () => {
-    jest.spyOn(authController, 'signUp').mockResolvedValue({ username: 'username' })
+  beforeEach(() => {
+    jest.clearAllMocks()
+    jest.spyOn(console, 'log').mockImplementation()
+  })
 
-    const response = await supertest(app).post('/api/auth/sign-up').send({ username: 'name' })
+  afterEach(jest.clearAllMocks)
+
+  it('should test for post sign up api', async () => {
+    jest.spyOn(webClient, 'post').mockResolvedValue({ success: true, message: 'successfully registered user' })
+
+    const response = await supertest(app)
+      .post('/api/auth/sign-up')
+      .set('x-trace-id', 'trace-id')
+      .send({ username: 'name' })
 
     expect(response.status).toStrictEqual(200)
-    expect(response.body).toStrictEqual({ username: 'username' })
+    expect(response.body).toStrictEqual({ success: true, message: 'successfully registered user' })
 
-    expect(authController.signUp).toHaveBeenCalledTimes(1)
-    expect(authController.signUp).toHaveBeenCalledWith({ username: 'name' })
+    expect(webClient.post).toHaveBeenCalledTimes(1)
+    expect(webClient.post).toHaveBeenCalledWith({
+      baseUrl: '/auth',
+      path: '/sign-up',
+      body: { username: 'name' },
+      headers: {
+        'accept-encoding': 'gzip, deflate',
+        connection: 'close',
+        'content-length': '19',
+        'content-type': 'application/json',
+        host: expect.any(String),
+        'x-trace-id': 'trace-id'
+      }
+    })
   })
 
   it('should test for post login api', async () => {
-    jest.spyOn(authController, 'login').mockResolvedValue({ username: 'username' })
+    jest.spyOn(webClient, 'post').mockResolvedValue({ token: 'token' })
 
-    const response = await supertest(app).post('/api/auth/login').send({ username: 'name' })
+    const response = await supertest(app)
+      .post('/api/auth/login')
+      .set('x-trace-id', 'trace-id')
+      .send({ username: 'name' })
 
     expect(response.status).toStrictEqual(200)
-    expect(response.body).toStrictEqual({ username: 'username' })
+    expect(response.body).toStrictEqual({ token: 'token' })
 
-    expect(authController.login).toHaveBeenCalledTimes(1)
-    expect(authController.login).toHaveBeenCalledWith({ username: 'name' })
+    expect(webClient.post).toHaveBeenCalledTimes(1)
+    expect(webClient.post).toHaveBeenCalledWith({
+      baseUrl: '/auth',
+      path: '/login',
+      body: { username: 'name' },
+      headers: {
+        'accept-encoding': 'gzip, deflate',
+        connection: 'close',
+        'content-length': '19',
+        'content-type': 'application/json',
+        host: expect.any(String),
+        'x-trace-id': 'trace-id'
+      }
+    })
   })
 })

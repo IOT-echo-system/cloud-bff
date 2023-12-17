@@ -1,18 +1,13 @@
-import type { Document } from '../typing'
-import type { AuthService } from '../services'
+import { authService } from '../services'
+import type { LoginApiResponse, SignUpApiResponse } from '../typing/auth'
+import type { Request } from 'express'
 
-export class AuthController {
-  private readonly authService: AuthService
+export const authController = {
+  signUp(request: Request): Promise<SignUpApiResponse> {
+    return authService.signUp(request)
+  },
 
-  constructor(authService: AuthService) {
-    this.authService = authService
+  login(request: Request): Promise<LoginApiResponse> {
+    return authService.login(request)
   }
-
-  signUp(userData: Document): Promise<Document> {
-    return this.authService.signUp(userData)
-  }
-
-  login(userCredentials: Document): Promise<Document> {
-    return this.authService.login(userCredentials)
-  }
-}
+} as const

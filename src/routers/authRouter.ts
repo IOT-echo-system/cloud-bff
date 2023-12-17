@@ -1,16 +1,10 @@
-import type { Request, Response } from 'express'
 import express from 'express'
-import type { Document } from '../typing'
-import { authController } from './controller'
+import { handleRequest } from './handleRequest'
+import { authController } from '../controllers'
 
 const authRouter = express.Router()
 
-authRouter.post('/sign-up', (req: Request, res: Response) => {
-  authController.signUp(req.body as Document).then(data => res.send(data))
-})
-
-authRouter.post('/login', (req: Request, res: Response) => {
-  authController.login(req.body as Document).then(data => res.send(data))
-})
+authRouter.post('/sign-up', handleRequest(authController.signUp))
+authRouter.post('/login', handleRequest(authController.login))
 
 export default authRouter

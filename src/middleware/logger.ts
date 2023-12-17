@@ -1,15 +1,15 @@
 import type { NextFunction, Request, Response } from 'express'
 import logger from 'logging-starter'
 
+export const attachTraceId = (req: Request, _res: Response, next: NextFunction): void => {
+  req.app.locals.traceId = req.header('x-trace-id') ?? 'missing-trace-id'
+  next()
+}
+
 export const logRequestAndResponse = (req: Request, res: Response, next: NextFunction): void => {
   const startTime = new Date()
-  const url = req.url
-  logger.request({
-    message: 'Received Request',
-    method: req.method,
-    url: url,
-    data: { body: req.body as Record<string, unknown> }
-  })
+  const searchableFields = { 'x-trace-id': req.app.locals.traceId as string }
+  logger.request({ message: 'Received Request', method: req.method, url: req.url, searchableFields })
   const send = res.send
   let isLogged = false
   res.send = function (data: Record<string, unknown>) {
@@ -18,10 +18,10 @@ export const logRequestAndResponse = (req: Request, res: Response, next: NextFun
       logger.response({
         message: 'Response for the request',
         method: req.method,
-        url: url,
+        url: req.url,
         statusCode: res.statusCode,
         responseTime,
-        data: { body: req.body as Record<string, unknown> }
+        searchableFields
       })
       isLogged = true
     }

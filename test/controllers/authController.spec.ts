@@ -1,27 +1,27 @@
-import { AuthController } from '../../src/controllers'
-import { AuthService } from '../../src/services'
+import { authService } from '../../src/services'
+import { authController } from '../../src/controllers'
+import type { Request } from 'express'
 
 describe('Auth Controller', () => {
-  const authService = new AuthService()
-  const authController = new AuthController(authService)
-
   beforeEach(jest.clearAllMocks)
 
   it('should call the sign up api', () => {
-    jest.spyOn(authService, 'signUp').mockResolvedValue({ username: 'username' })
+    jest.spyOn(authService, 'signUp').mockResolvedValue({ success: true, message: 'Successfully registered user' })
+    const mockRequest = { body: { username: 'username' }, headers: {} } as Request
 
-    authController.signUp({ username: 'username' })
+    authController.signUp(mockRequest)
 
     expect(authService.signUp).toHaveBeenCalledTimes(1)
-    expect(authService.signUp).toHaveBeenCalledWith({ username: 'username' })
+    expect(authService.signUp).toHaveBeenCalledWith(mockRequest)
   })
 
   it('should call the login api', () => {
-    jest.spyOn(authService, 'login').mockResolvedValue({ username: 'username' })
+    jest.spyOn(authService, 'login').mockResolvedValue({ token: 'token' })
+    const mockRequest = { body: { username: 'username' }, headers: {} } as Request
 
-    authController.login({ username: 'username' })
+    authController.login(mockRequest)
 
     expect(authService.login).toHaveBeenCalledTimes(1)
-    expect(authService.login).toHaveBeenCalledWith({ username: 'username' })
+    expect(authService.login).toHaveBeenCalledWith(mockRequest)
   })
 })

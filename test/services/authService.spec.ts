@@ -1,34 +1,37 @@
-import { AuthService } from '../../src/services'
+import { authService } from '../../src/services'
 import WebClient from 'web-client-starter/lib'
+import type { Request } from 'express'
 
 describe('Auth Service', () => {
-  const authService = new AuthService()
-
   beforeEach(jest.clearAllMocks)
 
   it('should call the sign up api', () => {
     jest.spyOn(WebClient, 'post').mockResolvedValue({ username: 'username' })
+    const mockRequest = { body: { username: 'username' }, headers: {} } as Request
 
-    authService.signUp({ username: 'username' })
+    authService.signUp(mockRequest)
 
     expect(WebClient.post).toHaveBeenCalledTimes(1)
     expect(WebClient.post).toHaveBeenCalledWith({
-      baseUrl: 'http://api-gateway:9100',
+      baseUrl: '/auth',
       body: { username: 'username' },
-      path: '/auth/sign-up'
+      path: '/sign-up',
+      headers: {}
     })
   })
 
   it('should call the login api', () => {
     jest.spyOn(WebClient, 'post').mockResolvedValue({ username: 'username' })
+    const mockRequest = { body: { username: 'username' }, headers: {} } as Request
 
-    authService.login({ username: 'username' })
+    authService.login(mockRequest)
 
     expect(WebClient.post).toHaveBeenCalledTimes(1)
     expect(WebClient.post).toHaveBeenCalledWith({
-      baseUrl: 'http://api-gateway:9100',
+      baseUrl: '/auth',
       body: { username: 'username' },
-      path: '/auth/login'
+      path: '/login',
+      headers: {}
     })
   })
 })

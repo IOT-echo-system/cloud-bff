@@ -133,28 +133,21 @@ module.exports = {
         'max-len': 'warn',
         '@typescript-eslint/no-magic-numbers': 'off',
         'max-statements': 'off',
-        '@typescript-eslint/unbound-method': 'off'
-      }
-    },
-    {
-      files: ['test/config.spec.ts'],
-      rules: {
-        'max-len': 'off',
-        '@typescript-eslint/no-magic-numbers': 'off',
-        'max-statements': 'off',
         '@typescript-eslint/unbound-method': 'off',
-        'no-process-env': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
-        'global-require': 'off',
-        '@typescript-eslint/no-require-imports': 'off',
-        '@typescript-eslint/no-var-requires': 'off',
-        '@typescript-eslint/no-unsafe-member-access': 'off'
       }
     },
     {
-      files: ['index.ts', 'src/config.ts'],
+      files: ['index.ts', 'src/config/apiConfig.ts'],
       rules: {
-        'no-process-env': 'off'
+        'no-process-env': 'off',
+        "@typescript-eslint/no-non-null-assertion":"off"
+      }
+    },
+    {
+      files: ['src/routers/*Router.ts'],
+      rules: {
+        "@typescript-eslint/unbound-method":"off"
       }
     }
   ]
