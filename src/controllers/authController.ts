@@ -9,5 +9,17 @@ export const authController = {
 
   login(request: Request): Promise<LoginApiResponse> {
     return authService.login(request)
+  },
+
+  generateOtp(request: Request) {
+    return authService.generateOtp(request)
+  },
+
+  verifyOtp(request: Request) {
+    return authService.verifyOtp(request)
+  },
+
+  resetPassword(request: Request) {
+    return authService.resetPassword(request)
   }
 } as const

@@ -34,4 +34,49 @@ describe('Auth Service', () => {
       headers: {}
     })
   })
+
+  it('should call the generate otp api', () => {
+    jest.spyOn(WebClient, 'post').mockResolvedValue({ success: true, otpId: 'otpId' })
+    const mockRequest = { body: { email: 'email' }, headers: {} } as Request
+
+    authService.generateOtp(mockRequest)
+
+    expect(WebClient.post).toHaveBeenCalledTimes(1)
+    expect(WebClient.post).toHaveBeenCalledWith({
+      baseUrl: '/auth',
+      body: { email: 'email' },
+      path: '/generate-otp',
+      headers: {}
+    })
+  })
+
+  it('should call the verify otp api', () => {
+    jest.spyOn(WebClient, 'post').mockResolvedValue({ success: true, token: 'token' })
+    const mockRequest = { body: { otpId: 'otpId', otp: '123456' }, headers: {} } as Request
+
+    authService.verifyOtp(mockRequest)
+
+    expect(WebClient.post).toHaveBeenCalledTimes(1)
+    expect(WebClient.post).toHaveBeenCalledWith({
+      baseUrl: '/auth',
+      body: { otp: '123456', otpId: 'otpId' },
+      path: '/verify-otp',
+      headers: {}
+    })
+  })
+
+  it('should call the reset password api', () => {
+    jest.spyOn(WebClient, 'post').mockResolvedValue({ success: true })
+    const mockRequest = { body: { password: 'password' }, headers: {} } as Request
+
+    authService.resetPassword(mockRequest)
+
+    expect(WebClient.post).toHaveBeenCalledTimes(1)
+    expect(WebClient.post).toHaveBeenCalledWith({
+      baseUrl: '/auth',
+      body: { password: 'password' },
+      path: '/reset-password',
+      headers: {}
+    })
+  })
 })

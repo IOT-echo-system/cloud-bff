@@ -3,6 +3,9 @@ export const apiConfig = {
   auth: {
     baseUrl: '/auth',
     signUp: '/sign-up',
-    login: '/login'
+    login: '/login',
+    generateOtp: '/generate-otp',
+    verifyOtp: '/verify-otp',
+    resetPassword: '/reset-password'
   }
 } as const
