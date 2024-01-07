@@ -23,7 +23,7 @@ describe('handle request test', () => {
       .send({ username: 'name' })
 
     expect(response.status).toStrictEqual(500)
-    expect(response.body).toStrictEqual({ message: 'Internal server error' })
+    expect(response.body).toStrictEqual({ errorCode: 'IOT-3001', message: 'Internal server error' })
 
     expect(webClient.post).toHaveBeenCalledTimes(1)
     expect(webClient.post).toHaveBeenCalledWith({
@@ -123,7 +123,7 @@ describe('handle request test', () => {
       .send({ username: 'name' })
 
     expect(response.status).toStrictEqual(500)
-    expect(response.body).toStrictEqual({})
+    expect(response.body).toStrictEqual({ errorCode: 'IOT-3001', message: 'API failure' })
 
     expect(webClient.post).toHaveBeenCalledTimes(1)
     expect(webClient.post).toHaveBeenCalledWith({

@@ -12,9 +12,17 @@ const handleApiException = (response: Response) => {
       searchableFields: { traceId: response.req.app.locals.traceId }
     })
     if (axios.isAxiosError(error)) {
-      return response.status(error.response?.status ?? HttpStatus.INTERNAL_SERVER_ERROR).send(error.response?.data)
+      return response.status(error.response?.status ?? HttpStatus.INTERNAL_SERVER_ERROR).send(
+        error.response?.data ?? {
+          errorCode: 'IOT-3001',
+          message: 'API failure'
+        }
+      )
     }
-    return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send({ message: 'Internal server error' })
+    return response.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
+      errorCode: 'IOT-3001',
+      message: 'Internal server error'
+    })
   }
 }
 
