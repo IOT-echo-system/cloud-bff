@@ -9,5 +9,6 @@ authRouter.post('/login', handleRequest(authController.login))
 authRouter.post('/generate-otp', handleRequest(authController.generateOtp))
 authRouter.post('/verify-otp', handleRequest(authController.verifyOtp))
 authRouter.post('/reset-password', handleRequest(authController.resetPassword))
+authRouter.get('/validate', handleRequest(authController.validate))
 
 export default authRouter

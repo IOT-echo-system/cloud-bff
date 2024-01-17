@@ -6,6 +6,7 @@ export const apiConfig = {
     login: '/login',
     generateOtp: '/generate-otp',
     verifyOtp: '/verify-otp',
-    resetPassword: '/reset-password'
+    resetPassword: '/reset-password',
+    validate: '/validate'
   }
 } as const

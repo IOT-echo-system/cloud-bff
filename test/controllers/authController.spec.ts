@@ -54,4 +54,14 @@ describe('Auth Controller', () => {
     expect(authService.resetPassword).toHaveBeenCalledTimes(1)
     expect(authService.resetPassword).toHaveBeenCalledWith(mockRequest)
   })
+
+  it('should call the validate api', () => {
+    jest.spyOn(authService, 'validate').mockResolvedValue({ userId: 'userId' })
+    const mockRequest = { headers: {} } as Request
+
+    authController.validate(mockRequest)
+
+    expect(authService.validate).toHaveBeenCalledTimes(1)
+    expect(authService.validate).toHaveBeenCalledWith(mockRequest)
+  })
 })

@@ -1,5 +1,12 @@
 import { authService } from '../services'
-import type { LoginApiResponse, SignUpApiResponse } from '../typing/auth'
+import type {
+  GenerateOtpApiResponse,
+  LoginApiResponse,
+  ResetPasswordApiResponse,
+  SignUpApiResponse,
+  ValidateApiResponse,
+  VerifyOtpApiResponse
+} from '../typing/auth'
 import type { Request } from 'express'
 
 export const authController = {
@@ -11,15 +18,19 @@ export const authController = {
     return authService.login(request)
   },
 
-  generateOtp(request: Request) {
+  generateOtp(request: Request): Promise<GenerateOtpApiResponse> {
     return authService.generateOtp(request)
   },
 
-  verifyOtp(request: Request) {
+  verifyOtp(request: Request): Promise<VerifyOtpApiResponse> {
     return authService.verifyOtp(request)
   },
 
-  resetPassword(request: Request) {
+  resetPassword(request: Request): Promise<ResetPasswordApiResponse> {
     return authService.resetPassword(request)
+  },
+
+  validate(request: Request): Promise<ValidateApiResponse> {
+    return authService.validate(request)
   }
 } as const

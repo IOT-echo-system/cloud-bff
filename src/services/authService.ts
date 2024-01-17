@@ -4,6 +4,7 @@ import type {
   LoginApiResponse,
   ResetPasswordApiResponse,
   SignUpApiResponse,
+  ValidateApiResponse,
   VerifyOtpApiResponse
 } from '../typing/auth'
 import type { Request } from 'express'
@@ -53,6 +54,14 @@ export const authService = {
       baseUrl: authConfig.baseUrl,
       path: authConfig.resetPassword,
       body: request.body as Record<string, unknown>,
+      headers: request.headers as Record<string, string>
+    })
+  },
+
+  validate(request: Request): Promise<ValidateApiResponse> {
+    return WebClient.get<ValidateApiResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.validate,
       headers: request.headers as Record<string, string>
     })
   }
