@@ -10,5 +10,6 @@ authRouter.post('/generate-otp', handleRequest(authController.generateOtp))
 authRouter.post('/verify-otp', handleRequest(authController.verifyOtp))
 authRouter.post('/reset-password', handleRequest(authController.resetPassword))
 authRouter.get('/validate', handleRequest(authController.validate))
+authRouter.post('/update-token', handleRequest(authController.updateToken))
 
 export default authRouter

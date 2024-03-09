@@ -64,5 +64,14 @@ export const authService = {
       path: authConfig.validate,
       headers: request.headers as Record<string, string>
     })
+  },
+
+  updateToken(request: Request): Promise<LoginApiResponse> {
+    return WebClient.post<LoginApiResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.updateToken,
+      headers: request.headers as Record<string, string>,
+      body: request.body as Record<string, unknown>
+    })
   }
 } as const

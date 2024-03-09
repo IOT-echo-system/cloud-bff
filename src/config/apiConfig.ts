@@ -7,7 +7,8 @@ export const apiConfig = {
     generateOtp: '/generate-otp',
     verifyOtp: '/verify-otp',
     resetPassword: '/reset-password',
-    validate: '/validate'
+    validate: '/validate',
+    updateToken: '/update-token'
   },
   account: {
     baseUrl: '/accounts',

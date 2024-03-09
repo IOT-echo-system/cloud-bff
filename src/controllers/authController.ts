@@ -32,5 +32,9 @@ export const authController = {
 
   validate(request: Request): Promise<ValidateApiResponse> {
     return authService.validate(request)
+  },
+
+  updateToken(request: Request): Promise<LoginApiResponse> {
+    return authService.updateToken(request)
   }
 } as const
