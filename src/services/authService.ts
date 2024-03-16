@@ -1,7 +1,7 @@
 import { apiConfig } from '../config/apiConfig'
 import type {
   GenerateOtpApiResponse,
-  LoginApiResponse,
+  LoginApiResponse, LogoutResBody,
   ResetPasswordApiResponse,
   SignUpApiResponse,
   ValidateApiResponse,
@@ -9,6 +9,7 @@ import type {
 } from '../typing/auth'
 import type { Request } from 'express'
 import WebClient from './webClient'
+import { User } from '../typing/user'
 
 const authConfig = apiConfig.auth
 
@@ -72,6 +73,22 @@ export const authService = {
       path: authConfig.updateToken,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, unknown>
+    })
+  },
+
+  getUserDetails(request: Request): Promise<User> {
+    return WebClient.get<User>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.userDetails,
+      headers: request.headers as Record<string, string>
+    })
+  },
+
+  logout(request: Request): Promise<LogoutResBody> {
+    return WebClient.get<LogoutResBody>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.logout,
+      headers: request.headers as Record<string, string>
     })
   }
 } as const

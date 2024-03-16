@@ -1,13 +1,14 @@
 import { authService } from '../services'
 import type {
   GenerateOtpApiResponse,
-  LoginApiResponse,
+  LoginApiResponse, LogoutResBody,
   ResetPasswordApiResponse,
   SignUpApiResponse,
   ValidateApiResponse,
   VerifyOtpApiResponse
 } from '../typing/auth'
 import type { Request } from 'express'
+import { User } from '../typing/user'
 
 export const authController = {
   signUp(request: Request): Promise<SignUpApiResponse> {
@@ -36,5 +37,13 @@ export const authController = {
 
   updateToken(request: Request): Promise<LoginApiResponse> {
     return authService.updateToken(request)
+  },
+
+  getUserDetails(request: Request): Promise<User> {
+    return authService.getUserDetails(request)
+  },
+
+  logout(request: Request): Promise<LogoutResBody> {
+    return authService.logout(request)
   }
 } as const

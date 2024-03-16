@@ -8,10 +8,13 @@ export const apiConfig = {
     verifyOtp: '/verify-otp',
     resetPassword: '/reset-password',
     validate: '/validate',
-    updateToken: '/update-token'
+    updateToken: '/update-token',
+    userDetails: '/user-details',
+    logout: '/logout'
   },
-  account: {
+  project: {
     baseUrl: '/accounts',
-    accounts: ''
+    accounts: '',
+    accountDetails: '/account-details'
   }
 } as const

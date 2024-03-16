@@ -1,2 +1,2 @@
 export { default as authRouter } from './authRouter'
-export { default as accountRouter } from './accountRouter'
+export { default as projectRouter } from './projectRouter'
