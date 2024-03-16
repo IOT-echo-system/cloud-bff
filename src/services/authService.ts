@@ -1,7 +1,8 @@
 import { apiConfig } from '../config/apiConfig'
 import type {
   GenerateOtpApiResponse,
-  LoginApiResponse, LogoutResBody,
+  LoginApiResponse,
+  LogoutResBody,
   ResetPasswordApiResponse,
   SignUpApiResponse,
   ValidateApiResponse,
@@ -9,7 +10,7 @@ import type {
 } from '../typing/auth'
 import type { Request } from 'express'
 import WebClient from './webClient'
-import { User } from '../typing/user'
+import type { User } from '../typing/user'
 
 const authConfig = apiConfig.auth
 
