@@ -16,5 +16,9 @@ export const apiConfig = {
     baseUrl: '/accounts',
     accounts: '',
     accountDetails: '/account-details'
+  },
+  board: {
+    baseUrl: '/boards',
+    boards: ''
   }
 } as const
