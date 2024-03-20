@@ -1,11 +1,11 @@
 import { boardService } from '../services'
-import type { BoardResponse } from '../typing/board'
+import type { Board, BoardResponse } from '../typing/board'
 import type { Request } from 'express'
 
 export const boardController = {
-  // getProjectsWithRoles(request: Request): Promise<ProjectsWithRoleResponse> {
-  //   return boardService.getProjectsWithRoles(request)
-  // },
+  getBoards(request: Request): Promise<Board[]> {
+    return boardService.getBoards(request)
+  },
 
   addBoard(request: Request): Promise<BoardResponse> {
     return boardService.createNewBoard(request)

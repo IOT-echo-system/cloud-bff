@@ -1,18 +1,18 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
-import type { BoardResponse } from '../typing/board'
+import type { Board, BoardResponse } from '../typing/board'
 import WebClient from './webClient'
 
 const boardConfig = apiConfig.board
 
 export const boardService = {
-  // getProjectsWithRoles(request: Request): Promise<ProjectsWithRoleResponse> {
-  //   return WebClient.get<ProjectsWithRoleResponse>({
-  //     baseUrl: boardConfig.baseUrl,
-  //     path: boardConfig.accounts,
-  //     headers: request.headers as Record<string, string>
-  //   })
-  // },
+  getBoards(request: Request): Promise<Board[]> {
+    return WebClient.get<Board[]>({
+      baseUrl: boardConfig.baseUrl,
+      path: boardConfig.boards,
+      headers: request.headers as Record<string, string>
+    })
+  },
 
   createNewBoard(request: Request): Promise<BoardResponse> {
     return WebClient.post<BoardResponse>({
