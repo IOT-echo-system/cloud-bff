@@ -1,5 +1,6 @@
-export type Role = { roleId: string; name: string }
-export type Policy = { policyId: string; name: string }
+import type { Role } from './role'
+import type { Policy } from './policy'
+
 export type ProjectWithRoles = { name: string; projectId: string; roles: Role[] }
-export type ProjectsWithRoleResponse = ProjectWithRoles[]
-export type Project = ProjectWithRoles & { policies: Policy[] }
+export type Project = { projectId: string; name: string; user: { userId: string; roleIds: string[] } }
+export type ProjectDetails = { projectId: string; name: string; roles: Role[]; policies: Policy[] }

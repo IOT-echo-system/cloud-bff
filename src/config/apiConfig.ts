@@ -17,6 +17,14 @@ export const apiConfig = {
     accounts: '',
     accountDetails: '/account-details'
   },
+  role: {
+    baseUrl: '/roles',
+    roles: ''
+  },
+  policy: {
+    baseUrl: '/policies',
+    policies: ''
+  },
   board: {
     baseUrl: '/boards',
     boards: ''

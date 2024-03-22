@@ -1,9 +1,9 @@
 import { projectService } from '../services'
-import type { Project, ProjectsWithRoleResponse, ProjectWithRoles } from '../typing/project'
+import type { ProjectDetails, ProjectWithRoles } from '../typing/project'
 import type { Request } from 'express'
 
 export const projectController = {
-  getProjectsWithRoles(request: Request): Promise<ProjectsWithRoleResponse> {
+  getProjectsWithRoles(request: Request): Promise<ProjectWithRoles[]> {
     return projectService.getProjectsWithRoles(request)
   },
 
@@ -11,7 +11,7 @@ export const projectController = {
     return projectService.createNewProject(request)
   },
 
-  getProjectDetails(request: Request): Promise<Project> {
+  getProjectDetails(request: Request): Promise<ProjectDetails> {
     return projectService.getProjectDetails(request)
   }
 } as const

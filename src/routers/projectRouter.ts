@@ -4,7 +4,7 @@ import { projectController } from '../controllers'
 
 const projectRouter = express.Router()
 
-projectRouter.get('', handleRequest(projectController.getProjectsWithRoles))
+projectRouter.get('/project-with-roles', handleRequest(projectController.getProjectsWithRoles))
 projectRouter.post('', handleRequest(projectController.addProject))
 projectRouter.get('/project-details', handleRequest(projectController.getProjectDetails))
 
