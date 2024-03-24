@@ -9,9 +9,9 @@ export const boardController = {
 
   addBoard(request: Request): Promise<BoardResponse> {
     return boardService.createNewBoard(request)
+  },
+
+  updateBoardName(request: Request): Promise<Board> {
+    return boardService.updateBoardName(request)
   }
-  //
-  // getProjectDetails(request: Request): Promise<Project> {
-  //   return boardService.getProjectDetails(request)
-  // }
 } as const
