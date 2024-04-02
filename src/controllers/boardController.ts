@@ -1,5 +1,5 @@
 import { boardService } from '../services'
-import type { Board, BoardResponse } from '../typing/board'
+import type { Board } from '../typing/board'
 import type { Request } from 'express'
 
 export const boardController = {
@@ -7,7 +7,12 @@ export const boardController = {
     return boardService.getBoards(request)
   },
 
-  addBoard(request: Request): Promise<BoardResponse> {
+  addBoard(request: Request): Promise<{
+    projectId: string
+    boardId: string
+    name: string
+    status: 'HEALTHY' | 'UNHEALTHY'
+  }> {
     return boardService.createNewBoard(request)
   },
 

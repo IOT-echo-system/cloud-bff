@@ -29,5 +29,9 @@ export const apiConfig = {
     baseUrl: '/boards',
     boards: '',
     updateBoardName: '/{boardId}/name'
+  },
+  widgets: {
+    baseUrl: '/widgets',
+    widgets: ''
   }
 } as const

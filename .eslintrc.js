@@ -145,9 +145,15 @@ module.exports = {
       }
     },
     {
-      files: ['src/routers/*Router.ts'],
+      files: ['src/routers/*Router.ts', 'src/routers/widgets/*Router.ts'],
       rules: {
         "@typescript-eslint/unbound-method":"off"
+      }
+    },
+    {
+      files: ['src/services/widgetService.ts'],
+      rules: {
+        "@typescript-eslint/no-unnecessary-condition":"off"
       }
     }
   ]

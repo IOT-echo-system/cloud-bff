@@ -1,16 +1,22 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
-import type { Board } from '../typing/board'
+import type { Board, BoardResponse } from '../typing/board'
 import WebClient from './webClient'
+import { widgetService } from './widgetService'
 
 const boardConfig = apiConfig.board
 
 export const boardService = {
-  getBoards(request: Request): Promise<Board[]> {
-    return WebClient.get<Board[]>({
+  async getBoards(request: Request): Promise<Board[]> {
+    const boards = await WebClient.get<BoardResponse[]>({
       baseUrl: boardConfig.baseUrl,
       path: boardConfig.boards,
       headers: request.headers as Record<string, string>
+    })
+    const boardIds = boards.map(board => board.boardId)
+    const widgets = await widgetService.getWidgetsByBoardIds(request, boardIds)
+    return boards.map(board => {
+      return { ...board, widgets: widgets.filter(widget => widget.boardId === board.boardId) } as Board
     })
   },
 
