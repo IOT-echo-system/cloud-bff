@@ -5,3 +5,5 @@ export type InvoiceWidget = {
   widgetType: 'INVOICE'
   title: string
 }
+
+export type InvoiceSeed = { code: string; name: string; pricePerUnit: number }
