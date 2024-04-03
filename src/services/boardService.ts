@@ -1,10 +1,10 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
-import type { Board, BoardResponse } from '../typing/board'
+import type { Board, BoardResponse, BoardSecretKeyResponse } from '../typing/board'
 import WebClient from './webClient'
 import { widgetService } from './widgetService'
 
-const boardConfig = apiConfig.board
+const { board: boardConfig, auth: authConfig } = apiConfig
 
 export const boardService = {
   async getBoards(request: Request): Promise<Board[]> {
@@ -36,6 +36,24 @@ export const boardService = {
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>,
       uriVariables: { boardId: request.params.boardId }
+    })
+  },
+
+  getSecretKey(request: Request): Promise<BoardSecretKeyResponse> {
+    return WebClient.get<BoardSecretKeyResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: boardConfig.baseUrl + boardConfig.secretKey,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { boardId: request.params.boardId } as Record<string, string>
+    })
+  },
+
+  updateSecretKey(request: Request): Promise<BoardSecretKeyResponse> {
+    return WebClient.put<BoardSecretKeyResponse>({
+      baseUrl: authConfig.baseUrl,
+      path: boardConfig.baseUrl + boardConfig.secretKey,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { boardId: request.params.boardId } as Record<string, string>
     })
   }
 } as const

@@ -1,5 +1,5 @@
 import { boardService } from '../services'
-import type { Board } from '../typing/board'
+import type { Board, BoardSecretKeyResponse } from '../typing/board'
 import type { Request } from 'express'
 
 export const boardController = {
@@ -18,5 +18,13 @@ export const boardController = {
 
   updateBoardName(request: Request): Promise<Board> {
     return boardService.updateBoardName(request)
+  },
+
+  getSecretKey(request: Request): Promise<BoardSecretKeyResponse> {
+    return boardService.getSecretKey(request)
+  },
+
+  updateSecretKey(request: Request): Promise<BoardSecretKeyResponse> {
+    return boardService.updateSecretKey(request)
   }
 } as const

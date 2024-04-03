@@ -7,5 +7,6 @@ const invoiceWidgetRouter = express.Router()
 invoiceWidgetRouter.put('/:widgetId/title', handleRequest(invoiceWidgetController.updateTitle))
 invoiceWidgetRouter.get('/:widgetId/seed', handleRequest(invoiceWidgetController.getSeedData))
 invoiceWidgetRouter.post('/:widgetId/seed', handleRequest(invoiceWidgetController.addSeedData))
+invoiceWidgetRouter.put('/:widgetId/seed/:seedCode', handleRequest(invoiceWidgetController.updateSeedData))
 
 export default invoiceWidgetRouter

@@ -13,5 +13,9 @@ export const invoiceWidgetController = {
 
   addSeedData(request: Request): Promise<InvoiceSeed> {
     return invoiceWidgetService.addSeedData(request)
+  },
+
+  updateSeedData(request: Request): Promise<InvoiceSeed> {
+    return invoiceWidgetService.updateSeedData(request)
   }
 } as const
