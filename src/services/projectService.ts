@@ -25,13 +25,20 @@ export const projectService = {
     })
   },
 
-  createNewProject(request: Request): Promise<ProjectWithRoles> {
-    return WebClient.post<ProjectWithRoles>({
+  async createNewProject(request: Request): Promise<ProjectWithRoles> {
+    const project = await WebClient.post<Project>({
       baseUrl: projectConfig.baseUrl,
       path: projectConfig.accounts,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>
     })
+    request.app.locals.roleIds = project.user.roleIds
+    const roles = await roleService.getRolesByRoleIds(request)
+    return {
+      name: project.name,
+      projectId: project.projectId,
+      roles: project.user.roleIds.map(roleId => roles.find(role => role.roleId === roleId)).filter(role => role)
+    } as ProjectWithRoles
   },
 
   async getProjectDetails(request: Request): Promise<ProjectDetails> {
