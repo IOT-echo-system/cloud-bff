@@ -8,5 +8,6 @@ invoiceWidgetRouter.put('/:widgetId/title', handleRequest(invoiceWidgetControlle
 invoiceWidgetRouter.get('/:widgetId/seed', handleRequest(invoiceWidgetController.getSeedData))
 invoiceWidgetRouter.post('/:widgetId/seed', handleRequest(invoiceWidgetController.addSeedData))
 invoiceWidgetRouter.put('/:widgetId/seed/:seedCode', handleRequest(invoiceWidgetController.updateSeedData))
+invoiceWidgetRouter.put('/:widgetId/payment', handleRequest(invoiceWidgetController.updatePayment))
 
 export default invoiceWidgetRouter

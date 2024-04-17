@@ -45,5 +45,15 @@ export const invoiceWidgetService = {
       uriVariables: { widgetId: request.params.widgetId, seedCode: request.params.seedCode } as Record<string, string>,
       body: request.body as Record<string, unknown>
     })
+  },
+
+  updatePayment(request: Request): Promise<InvoiceWidget> {
+    return WebClient.put<InvoiceWidget>({
+      baseUrl: baseUrl,
+      path: invoiceConfig.payment,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
+      body: request.body as Record<string, unknown>
+    })
   }
 } as const
