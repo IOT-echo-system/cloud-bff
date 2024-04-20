@@ -4,7 +4,10 @@ import type { Widget, WidgetType, WidgetTypeWithWidgets } from '../typing/widget
 import WebClient from './webClient'
 import { unique } from '../utils/utils'
 
-const widgetPaths = { INVOICE: '/invoices' } as const
+const widgetPaths: Record<WidgetType, string> = {
+  COLLECTION_OF_BUTTONS: '/collection-of-buttons',
+  INVOICE: '/invoices'
+}
 
 class WidgetService_ {
   widgetConfig = apiConfig.widgets

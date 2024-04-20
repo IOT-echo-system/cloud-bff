@@ -1,9 +1,12 @@
 export const widgetConfig = {
   invoice: {
     baseUrl: '/invoices',
-    title: '/{widgetId}/title',
     seed: '/{widgetId}/seed',
     updateSeed: '/{widgetId}/seed/{seedCode}',
     payment: '/{widgetId}/payment'
+  },
+  collectionOfButtons: {
+    baseUrl: '/collection-of-buttons',
+    buttons: '/{widgetId}/buttons'
   }
 } as const

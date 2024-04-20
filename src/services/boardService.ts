@@ -20,17 +20,18 @@ export const boardService = {
     })
   },
 
-  createNewBoard(request: Request): Promise<Board> {
-    return WebClient.post<Board>({
+  async createNewBoard(request: Request): Promise<Board> {
+    const board = await WebClient.post<Board>({
       baseUrl: boardConfig.baseUrl,
       path: boardConfig.boards,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>
     })
+    return { ...board, widgets: [] }
   },
 
-  updateBoardName(request: Request): Promise<Board> {
-    return WebClient.put<Board>({
+  updateBoardName(request: Request): Promise<BoardResponse> {
+    return WebClient.put<BoardResponse>({
       baseUrl: boardConfig.baseUrl,
       path: boardConfig.updateBoardName,
       headers: request.headers as Record<string, string>,
