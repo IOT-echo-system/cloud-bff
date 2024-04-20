@@ -26,7 +26,13 @@ class WidgetService_ {
     )
     const realWidgets = await this.getWidgetsByWidgetIds(request, widgetTypeWithWidgets)
     return parentWidgets
-      .map(widget => realWidgets.find(realWidget => realWidget.widgetId === widget.widgetId))
+      .map(widget => {
+        const finalWidget = realWidgets.find(realWidget => realWidget.widgetId === widget.widgetId)
+        if (finalWidget) {
+          finalWidget.title = widget.title
+        }
+        return finalWidget
+      })
       .filter(widget => widget) as Widget[]
   }
 
@@ -44,12 +50,13 @@ class WidgetService_ {
     return widgets.flatMap(widget => widget)
   }
 
-  updateTitle(request: Request): Promise<Widget> {
+  async updateTitle(request: Request): Promise<Widget> {
     return WebClient.put<Widget>({
       baseUrl: this.widgetConfig.baseUrl,
       path: this.widgetConfig.updateTitle,
       headers: request.headers as Record<string, string>,
-      uriVariables: { widgetId: request.params.widgetId } as Record<string, string>
+      uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
+      body: request.body as Record<string, string>
     })
   }
 

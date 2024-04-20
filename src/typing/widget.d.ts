@@ -5,6 +5,7 @@ export type Widget = {
   boardId: string
   widgetId: string
   widgetType: WidgetType
+  title: string
 } & Record<string, unknown>
 
 type WidgetTypeWithWidgets = { widgetType: WidgetType; widgets: Widget[] }
