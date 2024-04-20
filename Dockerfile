@@ -1,4 +1,4 @@
-FROM node:19-alpine
+FROM node:21.7-alpine
 WORKDIR /app
 COPY package* ./
 COPY node_modules ./node_modules

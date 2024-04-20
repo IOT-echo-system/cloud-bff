@@ -33,6 +33,7 @@ export const apiConfig = {
   },
   widgets: {
     baseUrl: '/widgets',
-    widgets: ''
+    widgets: '',
+    updateTitle: '/{widgetId}/title'
   }
 } as const

@@ -2,7 +2,7 @@ import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Board, BoardResponse, BoardSecretKeyResponse } from '../typing/board'
 import WebClient from './webClient'
-import { widgetService } from './widgetService'
+import { WidgetService } from './widgetService'
 
 const { board: boardConfig, auth: authConfig } = apiConfig
 
@@ -14,7 +14,7 @@ export const boardService = {
       headers: request.headers as Record<string, string>
     })
     const boardIds = boards.map(board => board.boardId)
-    const widgets = await widgetService.getWidgetsByBoardIds(request, boardIds)
+    const widgets = await WidgetService.getWidgetsByBoardIds(request, boardIds)
     return boards.map(board => {
       return { ...board, widgets: widgets.filter(widget => widget.boardId === board.boardId) } as Board
     })

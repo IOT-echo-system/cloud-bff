@@ -4,15 +4,15 @@ import type { Widget, WidgetType, WidgetTypeWithWidgets } from '../typing/widget
 import WebClient from './webClient'
 import { unique } from '../utils/utils'
 
-const widgetConfig = apiConfig.widgets
-
 const widgetPaths = { INVOICE: '/invoices' } as const
 
-export const widgetService = {
+class WidgetService_ {
+  widgetConfig = apiConfig.widgets
+
   async getWidgetsByBoardIds(request: Request, boardIds: string[]): Promise<Widget[]> {
     const parentWidgets = await WebClient.get<Widget[]>({
-      baseUrl: widgetConfig.baseUrl,
-      path: widgetConfig.widgets,
+      baseUrl: this.widgetConfig.baseUrl,
+      path: this.widgetConfig.widgets,
       headers: request.headers as Record<string, string>,
       queryParams: { boardIds: boardIds.join(',') } as Record<string, string>
     })
@@ -28,13 +28,13 @@ export const widgetService = {
     return parentWidgets
       .map(widget => realWidgets.find(realWidget => realWidget.widgetId === widget.widgetId))
       .filter(widget => widget) as Widget[]
-  },
+  }
 
   async getWidgetsByWidgetIds(request: Request, widgetTypeWithWidgets: WidgetTypeWithWidgets[]): Promise<Widget[]> {
     const widgets = await Promise.all(
       widgetTypeWithWidgets.map(widgetTypeWithWidget => {
         return WebClient.get<Widget[]>({
-          baseUrl: widgetConfig.baseUrl,
+          baseUrl: this.widgetConfig.baseUrl,
           path: widgetPaths[widgetTypeWithWidget.widgetType as keyof typeof widgetPaths],
           headers: request.headers as Record<string, string>,
           queryParams: { widgetIds: widgetTypeWithWidget.widgets.map(widget => widget.widgetId).join(',') }
@@ -42,13 +42,24 @@ export const widgetService = {
       })
     )
     return widgets.flatMap(widget => widget)
-  },
+  }
+
+  updateTitle(request: Request): Promise<Widget> {
+    return WebClient.put<Widget>({
+      baseUrl: this.widgetConfig.baseUrl,
+      path: this.widgetConfig.updateTitle,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId } as Record<string, string>
+    })
+  }
 
   addWidget(request: Request): Promise<Widget> {
     return WebClient.post<Widget>({
-      baseUrl: widgetConfig.baseUrl,
+      baseUrl: this.widgetConfig.baseUrl,
       path: widgetPaths[(request.body as { type: WidgetType }).type as keyof typeof widgetPaths],
       headers: request.headers as Record<string, string>
     })
   }
-} as const
+}
+
+export const WidgetService = new WidgetService_()
