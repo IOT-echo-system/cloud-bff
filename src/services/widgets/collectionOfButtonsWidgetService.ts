@@ -16,5 +16,34 @@ export const collectionOfButtonsWidgetService = {
       uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
       body: request.body as Record<string, string>
     })
+  },
+
+  updateButton(request: Request): Promise<Widget> {
+    return WebClient.put<Widget>({
+      baseUrl: baseUrl,
+      path: collectionOfButtonsConfig.button,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId, buttonId: request.params.buttonId } as Record<string, string>,
+      body: request.body as Record<string, string>
+    })
+  },
+
+  deleteButton(request: Request): Promise<Widget> {
+    return WebClient.deleteAPI<Widget>({
+      baseUrl: baseUrl,
+      path: collectionOfButtonsConfig.button,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId, buttonId: request.params.buttonId } as Record<string, string>
+    })
+  },
+
+  updateButtonValue(request: Request): Promise<Widget> {
+    return WebClient.put<Widget>({
+      baseUrl: baseUrl,
+      path: collectionOfButtonsConfig.buttonValue,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId, buttonId: request.params.buttonId } as Record<string, string>,
+      body: request.body as Record<string, unknown>
+    })
   }
 } as const
