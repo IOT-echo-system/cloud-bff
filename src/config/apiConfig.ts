@@ -15,7 +15,8 @@ export const apiConfig = {
   project: {
     baseUrl: '/accounts',
     accounts: '',
-    accountDetails: '/account-details'
+    accountDetails: '/account-details',
+    name: '/{projectId}/name'
   },
   role: {
     baseUrl: '/roles',

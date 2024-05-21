@@ -4,6 +4,7 @@ import type { Project, ProjectDetails, ProjectWithRoles } from '../typing/projec
 import WebClient from './webClient'
 import { roleService } from './roleService'
 import { policyService } from './policyService'
+import '../utils/extensions'
 
 const projectConfig = apiConfig.project
 
@@ -53,5 +54,15 @@ export const projectService = {
       policyService.getPolicies(request)
     ])
     return { projectId: project.projectId, name: project.name, roles, policies } as ProjectDetails
+  },
+
+  updateProjectName(request: Request): Promise<Project> {
+    return WebClient.put<Project>({
+      baseUrl: projectConfig.baseUrl,
+      path: projectConfig.name,
+      headers: request.headers as Record<string, string>,
+      body: request.body as Record<string, string>,
+      uriVariables: { boardId: request.params.projectId }
+    })
   }
 } as const
