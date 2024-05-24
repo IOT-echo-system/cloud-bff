@@ -1,4 +1,5 @@
 export * from './authController'
 export * from './projectController'
 export * from './boardController'
+export * from './routineController'
 export * from './widgetController'

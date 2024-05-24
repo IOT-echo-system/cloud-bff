@@ -33,7 +33,7 @@ export const boardService = {
   updateBoardName(request: Request): Promise<BoardResponse> {
     return WebClient.put<BoardResponse>({
       baseUrl: boardConfig.baseUrl,
-      path: boardConfig.updateBoardName,
+      path: boardConfig.name,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>,
       uriVariables: { boardId: request.params.boardId }
