@@ -5,6 +5,7 @@ import WebClient from './webClient'
 import { unique } from '../utils/utils'
 
 const widgetPaths: Record<WidgetType, string> = {
+  LEVEL_MONITOR: '/level-monitor',
   COLLECTION_OF_BUTTONS: '/collection-of-buttons',
   INVOICE: '/invoices'
 }

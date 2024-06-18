@@ -1,4 +1,4 @@
-type WidgetType = 'INVOICE' | 'COLLECTION_OF_BUTTONS'
+type WidgetType = 'INVOICE' | 'COLLECTION_OF_BUTTONS' | 'LEVEL_MONITOR'
 
 export type Widget = {
   projectId: string

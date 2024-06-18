@@ -10,5 +10,9 @@ export const widgetConfig = {
     buttons: '/{widgetId}/buttons',
     button: '/{widgetId}/buttons/{buttonId}',
     buttonValue: '/{widgetId}/buttons/{buttonId}/value'
+  },
+  levelMonitor: {
+    baseUrl: '/level-monitor',
+    updateValues: '/{widgetId}/values'
   }
 } as const

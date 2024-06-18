@@ -3,9 +3,11 @@ import express from 'express'
 import router from './router'
 import { attachTraceId, logRequestAndResponse } from './middleware/logger'
 import { HttpStatus } from './config/http'
+import cors from 'cors'
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 app.get('/', (_req: Request, res: Response) => {
   res.send({ message: 'Hello human, you have just arrived at cloud-bff' })
