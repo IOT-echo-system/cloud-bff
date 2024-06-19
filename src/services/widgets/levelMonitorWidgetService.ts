@@ -16,5 +16,15 @@ export const levelMonitorWidgetService = {
       uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
       body: request.body as Record<string, unknown>
     })
+  },
+
+  captureValue(request: Request): Promise<LevelMonitorWidget> {
+    return WebClient.put<LevelMonitorWidget>({
+      baseUrl: baseUrl,
+      path: levelMonitorConfig.captureValue,
+      headers: request.headers as Record<string, string>,
+      uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
+      body: request.body as Record<string, unknown>
+    })
   }
 } as const
