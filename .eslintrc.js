@@ -134,26 +134,26 @@ module.exports = {
         '@typescript-eslint/no-magic-numbers': 'off',
         'max-statements': 'off',
         '@typescript-eslint/unbound-method': 'off',
-        '@typescript-eslint/no-unsafe-assignment': 'off',
+        '@typescript-eslint/no-unsafe-assignment': 'off'
       }
     },
     {
-      files: ['index.ts', 'src/config/apiConfig.ts'],
+      files: ['index.ts', 'src/config/apiConfig.ts', 'src/config/config.ts'],
       rules: {
         'no-process-env': 'off',
-        "@typescript-eslint/no-non-null-assertion":"off"
+        '@typescript-eslint/no-non-null-assertion': 'off'
       }
     },
     {
       files: ['src/routers/*Router.ts', 'src/routers/widgets/*Router.ts'],
       rules: {
-        "@typescript-eslint/unbound-method":"off"
+        '@typescript-eslint/unbound-method': 'off'
       }
     },
     {
       files: ['src/services/widgetService.ts'],
       rules: {
-        "@typescript-eslint/no-unnecessary-condition":"off"
+        '@typescript-eslint/no-unnecessary-condition': 'off'
       }
     }
   ]

@@ -1,4 +1,5 @@
 export const apiConfig = {
+  mqttUrl: process.env.MQTT_URL!,
   baseUrl: process.env.API_GATEWAY_BASE_URL!,
   auth: {
     baseUrl: '/auth',

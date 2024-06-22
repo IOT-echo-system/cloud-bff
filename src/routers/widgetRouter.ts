@@ -6,6 +6,7 @@ import { collectionOfButtonsWidgetRouter, invoiceWidgetRouter, levelMonitorWidge
 const widgetRouter = express.Router()
 
 widgetRouter.post('', handleRequest(widgetController.addWidget))
+widgetRouter.post('/update-widget', handleRequest(widgetController.updateWidget))
 widgetRouter.put('/:widgetId/title', handleRequest(widgetController.updateTitle))
 widgetRouter.use('/invoices', invoiceWidgetRouter)
 widgetRouter.use('/collection-of-buttons', collectionOfButtonsWidgetRouter)
