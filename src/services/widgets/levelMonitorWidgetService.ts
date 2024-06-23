@@ -3,11 +3,10 @@ import type { Request } from 'express'
 import WebClient from '../webClient'
 import { widgetConfig } from './widgetConfig'
 import type { LevelMonitorWidget } from '../../typing/widgets'
-import { MqttClient } from '../../mqtt'
+import wss from '../../websocketServer'
 
 const levelMonitorConfig = widgetConfig.levelMonitor
 const baseUrl = apiConfig.widgets.baseUrl + levelMonitorConfig.baseUrl
-const mqtt = MqttClient.getInstance()
 
 export const levelMonitorWidgetService = {
   async updateValues(request: Request): Promise<LevelMonitorWidget> {
@@ -18,7 +17,7 @@ export const levelMonitorWidgetService = {
       uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
       body: request.body as Record<string, unknown>
     })
-    await mqtt.updateWidget(widget)
+    wss.updateWidget(widget)
     return widget
   },
 
@@ -30,7 +29,7 @@ export const levelMonitorWidgetService = {
       uriVariables: { widgetId: request.params.widgetId } as Record<string, string>,
       body: request.body as Record<string, unknown>
     })
-    await mqtt.updateWidget(widget)
+    wss.updateWidget(widget)
     return widget
   }
 } as const

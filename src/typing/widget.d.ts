@@ -1,5 +1,3 @@
-import type { Packet } from 'mqtt'
-
 type WidgetType = 'INVOICE' | 'COLLECTION_OF_BUTTONS' | 'LEVEL_MONITOR'
 
 export type Widget = {
@@ -11,5 +9,3 @@ export type Widget = {
 } & Record<string, unknown>
 
 type WidgetTypeWithWidgets = { widgetType: WidgetType; widgets: Widget[] }
-
-export type MqttPacket = Packet | undefined
