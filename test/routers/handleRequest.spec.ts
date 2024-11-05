@@ -1,4 +1,4 @@
-import webClient from '../../src/services/webClient'
+import webClient from 'web-client-starter'
 import supertest from 'supertest'
 import app from '../../src/app'
 import logger from 'logging-starter'

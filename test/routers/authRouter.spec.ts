@@ -1,6 +1,6 @@
 import supertest from 'supertest'
 import app from '../../src/app'
-import webClient from '../../src/services/webClient'
+import webClient from 'web-client-starter'
 
 jest.mock('web-client-starter')
 describe('Auth Router', () => {
