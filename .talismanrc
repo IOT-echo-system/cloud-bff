@@ -1,0 +1,4 @@
+fileignoreconfig:
+- filename: src/config/apiConfig.ts
+  checksum: 276861d568c9ee5f8b58600e7cf5de9ca334ad500a6c4f0ba10cda791110af12
+version: ""

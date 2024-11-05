@@ -1,6 +1,6 @@
 import { apiConfig } from '../../config/apiConfig'
 import type { Request } from 'express'
-import WebClient from '../webClient'
+import WebClient from 'web-client-starter'
 import { widgetConfig } from './widgetConfig'
 import type { LevelMonitorWidget } from '../../typing/widgets'
 import wss from '../../websocketServer'

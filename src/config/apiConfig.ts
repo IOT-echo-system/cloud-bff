@@ -1,8 +1,19 @@
 export const apiConfig = {
   baseUrl: process.env.API_GATEWAY_BASE_URL!,
   auth: {
-    baseUrl: '/auth',
-    signUp: '/sign-up',
+    baseUrl: process.env.AUTH_SERVICE_BASE_URL!,
+    login: '/auth/login',
+    generateOtp: '/generate-otp',
+    verifyOtp: '/verify-otp',
+    resetPassword: '/reset-password',
+    validate: '/validate',
+    updateToken: '/update-token',
+    userDetails: '/user-details',
+    logout: '/logout'
+  },
+  user: {
+    baseUrl: process.env.USER_SERVICE_BASE_URL!,
+    registration: '/users/registration',
     login: '/login',
     generateOtp: '/generate-otp',
     verifyOtp: '/verify-otp',

@@ -1,7 +1,7 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Project, ProjectDetails, ProjectWithRoles } from '../typing/project'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 import { roleService } from './roleService'
 import { policyService } from './policyService'
 import '../utils/extensions'

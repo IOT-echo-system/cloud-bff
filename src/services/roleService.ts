@@ -1,6 +1,6 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 import { unique } from '../utils/utils'
 import type { Role } from '../typing/role'
 

@@ -1,7 +1,7 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Board, BoardResponse, BoardSecretKeyResponse } from '../typing/board'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 import { WidgetService } from './widgetService'
 
 const { board: boardConfig, auth: authConfig } = apiConfig

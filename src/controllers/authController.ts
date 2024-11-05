@@ -4,7 +4,6 @@ import type {
   LoginApiResponse,
   LogoutResBody,
   ResetPasswordApiResponse,
-  SignUpApiResponse,
   ValidateApiResponse,
   VerifyOtpApiResponse
 } from '../typing/auth'
@@ -12,10 +11,6 @@ import type { Request } from 'express'
 import type { User } from '../typing/user'
 
 export const authController = {
-  signUp(request: Request): Promise<SignUpApiResponse> {
-    return authService.signUp(request)
-  },
-
   login(request: Request): Promise<LoginApiResponse> {
     return authService.login(request)
   },

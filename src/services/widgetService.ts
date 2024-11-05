@@ -1,7 +1,7 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Widget, WidgetType, WidgetTypeWithWidgets } from '../typing/widget'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 import { unique } from '../utils/utils'
 
 const widgetPaths: Record<WidgetType, string> = {

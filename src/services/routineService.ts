@@ -1,7 +1,7 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Routine } from '../typing/routine'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 
 const { routine: routineConfig } = apiConfig
 

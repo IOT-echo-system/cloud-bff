@@ -4,26 +4,16 @@ import type {
   LoginApiResponse,
   LogoutResBody,
   ResetPasswordApiResponse,
-  SignUpApiResponse,
   ValidateApiResponse,
   VerifyOtpApiResponse
 } from '../typing/auth'
 import type { Request } from 'express'
-import WebClient from './webClient'
+import WebClient from 'web-client-starter'
 import type { User } from '../typing/user'
 
 const authConfig = apiConfig.auth
 
 export const authService = {
-  signUp(request: Request): Promise<SignUpApiResponse> {
-    return WebClient.post<SignUpApiResponse>({
-      baseUrl: authConfig.baseUrl,
-      path: authConfig.signUp,
-      body: request.body as Record<string, unknown>,
-      headers: request.headers as Record<string, string>
-    })
-  },
-
   login(request: Request): Promise<LoginApiResponse> {
     return WebClient.post<LoginApiResponse>({
       baseUrl: authConfig.baseUrl,
