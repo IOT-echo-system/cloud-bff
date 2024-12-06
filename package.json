@@ -40,9 +40,9 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "5.0.0",
     "logging-starter": "^0.0.6",
-    "web-client-starter": "^0.0.5",
+    "web-client-starter": "^0.0.6",
     "ws": "^8.17.1"
   }
 }
