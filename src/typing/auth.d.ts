@@ -3,5 +3,5 @@ export type LoginApiResponse = { token: string }
 export type GenerateOtpApiResponse = { success: boolean; otpId: string; generateAt: Date }
 export type VerifyOtpApiResponse = { success: boolean; token: string }
 export type ResetPasswordApiResponse = { success: boolean }
-export type ValidateApiResponse = { userId: string }
+export type ValidateApiResponse = { userId: string; roleId: string }
 export type LogoutResBody = ResetPasswordApiResponse
