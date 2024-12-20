@@ -1,6 +1,6 @@
 export * from './authService'
 export * from './userService'
-export * from './projectService'
+export * from './premisesService'
 export * from './boardService'
 export * from './routineService'
 export * from './widgetService'

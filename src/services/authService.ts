@@ -3,6 +3,7 @@ import type {
   GenerateOtpApiResponse,
   LoginApiResponse,
   LogoutResBody,
+  PoliciesResBody,
   ResetPasswordApiResponse,
   ValidateApiResponse,
   VerifyOtpApiResponse
@@ -79,6 +80,14 @@ export const authService = {
     return WebClient.get<LogoutResBody>({
       baseUrl: authConfig.baseUrl,
       path: authConfig.logout,
+      headers: request.headers as Record<string, string>
+    })
+  },
+
+  getPolicies(request: Request): Promise<PoliciesResBody> {
+    return WebClient.get<PoliciesResBody>({
+      baseUrl: authConfig.baseUrl,
+      path: authConfig.policies,
       headers: request.headers as Record<string, string>
     })
   }

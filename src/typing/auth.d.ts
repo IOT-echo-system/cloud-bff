@@ -5,3 +5,4 @@ export type VerifyOtpApiResponse = { success: boolean; token: string }
 export type ResetPasswordApiResponse = { success: boolean }
 export type ValidateApiResponse = { userId: string; roleId: string }
 export type LogoutResBody = ResetPasswordApiResponse
+export type PoliciesResBody = Array<{ policyId: string; name: string }>

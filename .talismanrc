@@ -2,5 +2,5 @@ fileignoreconfig:
 - filename: src/config/apiConfig.ts
   checksum: 276861d568c9ee5f8b58600e7cf5de9ca334ad500a6c4f0ba10cda791110af12
 - filename: package-lock.json
-  checksum: a589d23b105ebc8d4fac9f67b3972b8277af1ef92db69dff6b665b303b5c8374
+  checksum: 14930640fce830b4db70223598d4cf51fdbdcdbea3ab0f13da531c09d9ee23a0
 version: ""

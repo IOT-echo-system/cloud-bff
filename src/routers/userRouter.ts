@@ -5,5 +5,6 @@ import { userController } from '../controllers'
 const userRouter = express.Router()
 
 userRouter.post('/registration', handleRequest(userController.registration))
+userRouter.get('/me', handleRequest(userController.me))
 
 export default userRouter
