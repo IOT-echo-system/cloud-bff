@@ -64,18 +64,4 @@ describe('Auth Service', () => {
       headers: {}
     })
   })
-
-  it('should call the validate api', () => {
-    jest.spyOn(WebClient, 'get').mockResolvedValue({ userId: 'userId' })
-    const mockRequest = { headers: {} } as Request
-
-    authService.validate(mockRequest)
-
-    expect(WebClient.get).toHaveBeenCalledTimes(1)
-    expect(WebClient.get).toHaveBeenCalledWith({
-      baseUrl: '/auth',
-      path: '/validate',
-      headers: {}
-    })
-  })
 })
