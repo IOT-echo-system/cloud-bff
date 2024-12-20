@@ -1,5 +1,4 @@
 export const apiConfig = {
-  baseUrl: process.env.API_GATEWAY_BASE_URL!,
   auth: {
     baseUrl: process.env.AUTH_SERVICE_BASE_URL ?? 'http://localhost:9001',
     login: '/auth/login',
@@ -26,7 +25,7 @@ export const apiConfig = {
     logout: '/logout'
   },
   premises: {
-    baseUrl: process.env.USER_SERVICE_BASE_URL ?? 'http://localhost:9004',
+    baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
     premises: '/premises',
     name: '/premises/{premisesId}/name'
   },
