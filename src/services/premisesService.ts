@@ -2,7 +2,6 @@ import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
 import type { Premises } from '../typing/premises'
 import WebClient from 'web-client-starter'
-import '../utils/extensions'
 
 const premisesConfig = apiConfig.premises
 

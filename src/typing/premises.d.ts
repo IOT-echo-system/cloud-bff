@@ -1,6 +1,2 @@
-import type { Role } from './role'
-import type { Policy } from './policy'
-
-export type ProjectWithRoles = { name: string; projectId: string; roles: Role[] }
-export type Premises = { premisesId: string; name: string }
-export type ProjectDetails = { projectId: string; name: string; roles: Role[]; policies: Policy[] }
+type Address = { address1: string; address2?: string; city: string; district: string; state: string; zipCode: string }
+export type Premises = { premisesId: string; name: string; address: Address; createdAt: Date }
