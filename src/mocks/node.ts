@@ -1,4 +1,6 @@
 import { setupServer } from 'msw/node'
-import { handlers } from './handlers'
+import { authHandlers } from './authHandlers'
+import { userHandlers } from './userHandlers'
+import { premisesHandlers } from './premisesHandlers'
 
-export const mockServer = setupServer(...handlers)
+export const mockServer = setupServer(...authHandlers, ...userHandlers, ...premisesHandlers)

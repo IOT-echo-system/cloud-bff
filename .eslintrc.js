@@ -128,7 +128,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.spec.ts', 'src/mock/*.ts'],
+      files: ['*.spec.ts', 'src/mocks/*.ts'],
       rules: {
         'max-len': 'warn',
         '@typescript-eslint/no-magic-numbers': 'off',
