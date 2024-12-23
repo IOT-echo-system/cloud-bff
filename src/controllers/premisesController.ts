@@ -7,6 +7,10 @@ export const premisesController = {
     return premisesService.addPremises(request)
   },
 
+  getPremises(request: Request): Promise<Premises[]> {
+    return premisesService.getPremises(request)
+  },
+
   updateProjectName(request: Request): Promise<Premises> {
     return premisesService.updateProjectName(request)
   }

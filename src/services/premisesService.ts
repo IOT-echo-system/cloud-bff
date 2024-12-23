@@ -6,12 +6,20 @@ import WebClient from 'web-client-starter'
 const premisesConfig = apiConfig.premises
 
 export const premisesService = {
-  async addPremises(request: Request): Promise<Premises> {
+  addPremises(request: Request): Promise<Premises> {
     return WebClient.post<Premises>({
       baseUrl: premisesConfig.baseUrl,
       path: premisesConfig.premises,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>
+    })
+  },
+
+  getPremises(request: Request): Promise<Premises[]> {
+    return WebClient.get<Premises[]>({
+      baseUrl: premisesConfig.baseUrl,
+      path: premisesConfig.premises,
+      headers: request.headers as Record<string, string>
     })
   },
 
