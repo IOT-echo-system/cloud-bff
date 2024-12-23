@@ -27,7 +27,7 @@ export const apiConfig = {
   premises: {
     baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
     premises: '/premises',
-    name: '/premises/{premisesId}/name'
+    premisesDetails: '/premises/{premisesId}'
   },
   role: {
     baseUrl: '/roles',

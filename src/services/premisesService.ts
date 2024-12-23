@@ -23,13 +23,22 @@ export const premisesService = {
     })
   },
 
-  updateProjectName(request: Request): Promise<Premises> {
+  getPremisesDetails(request: Request): Promise<Premises> {
+    return WebClient.get<Premises>({
+      baseUrl: premisesConfig.baseUrl,
+      path: premisesConfig.premisesDetails,
+      headers: request.headers as Record<string, string>,
+      uriVariables: request.params
+    })
+  },
+
+  updatePremisesDetails(request: Request): Promise<Premises> {
     return WebClient.put<Premises>({
       baseUrl: premisesConfig.baseUrl,
-      path: premisesConfig.name,
+      path: premisesConfig.premisesDetails,
       headers: request.headers as Record<string, string>,
       body: request.body as Record<string, string>,
-      uriVariables: { boardId: request.params.projectId }
+      uriVariables: request.params
     })
   }
 } as const

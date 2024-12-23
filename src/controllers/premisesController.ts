@@ -11,7 +11,11 @@ export const premisesController = {
     return premisesService.getPremises(request)
   },
 
-  updateProjectName(request: Request): Promise<Premises> {
-    return premisesService.updateProjectName(request)
+  getPremisesDetails(request: Request): Promise<Premises> {
+    return premisesService.getPremisesDetails(request)
+  },
+
+  updatePremisesDetails(request: Request): Promise<Premises> {
+    return premisesService.updatePremisesDetails(request)
   }
 } as const
