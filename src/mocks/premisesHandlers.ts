@@ -99,12 +99,20 @@ export const premisesHandlers = [
   // get premises details
   http.get(`${baseUrl}/premises/:premisesId`, ({ params }) => {
     const { premisesId } = params
-    return HttpResponse.json<Premises>(premises.find(prem => prem.premisesId === premisesId))
+    const currentPremises = premises.find(prem => prem.premisesId === premisesId)
+    if (currentPremises) {
+      return HttpResponse.json<Premises>(currentPremises)
+    }
+    return new HttpResponse(JSON.stringify({ errorCode: 'IOT-4001', message: 'Premises not found' }), {
+      status: 404,
+      statusText: 'Out Of Apples'
+    })
   }),
 
   // get premises details
-  http.put(`${baseUrl}/premises/:premisesId`, ({ params }) => {
+  http.put(`${baseUrl}/premises/:premisesId`, async ({ params, request }) => {
     const { premisesId } = params
-    return HttpResponse.json<Premises>(premises.find(prem => prem.premisesId === premisesId))
+    const updatePremises = (await request.json()) as Premises
+    return HttpResponse.json<Premises>({ ...premises.find(prem => prem.premisesId === premisesId)!, ...updatePremises })
   })
 ]
