@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import { apiConfig } from '../config/apiConfig'
-import type { BoardsResponse } from '../typing/master'
+import type { BoardsResponse, LocationResponse } from '../typing/master'
 
 const baseUrl = apiConfig.master.baseUrl
 
@@ -19,5 +19,14 @@ export const masterHandlers = [
   // get boards from master
   http.get(`${baseUrl}/boards`, () => {
     return HttpResponse.json<BoardsResponse[]>(boards)
+  }),
+
+  http.get(`${baseUrl}/locations/:location`, () => {
+    return HttpResponse.json<LocationResponse>({
+      pincode: '226004',
+      district: 'Lucknow',
+      state: 'Uttar pradesh',
+      city: 'Lucknow'
+    })
   })
 ]

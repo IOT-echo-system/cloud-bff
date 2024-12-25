@@ -34,8 +34,9 @@ export const apiConfig = {
     zones: '/zones'
   },
   master: {
-    baseUrl: process.env.MASTER_SERVICE_BASE_URL ?? 'http://localhost:9005',
-    boards: '/boards'
+    baseUrl: process.env.MASTER_DATA_SERVICE_BASE_URL ?? 'http://localhost:9005',
+    boards: '/boards',
+    locations: '/locations/{pincode}'
   },
   board: {
     baseUrl: process.env.DEVICE_SERVICE_BASE_URL ?? 'http://localhost:9006',
