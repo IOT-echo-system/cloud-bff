@@ -33,6 +33,14 @@ export const apiConfig = {
     baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
     zones: '/zones'
   },
+  master: {
+    baseUrl: process.env.MASTER_SERVICE_BASE_URL ?? 'http://localhost:9005',
+    boards: '/boards'
+  },
+  board: {
+    baseUrl: process.env.DEVICE_SERVICE_BASE_URL ?? 'http://localhost:9006',
+    boards: '/boards'
+  },
   role: {
     baseUrl: '/roles',
     roles: ''
@@ -41,12 +49,7 @@ export const apiConfig = {
     baseUrl: '/policies',
     policies: ''
   },
-  board: {
-    baseUrl: '/boards',
-    boards: '',
-    name: '/{boardId}/name',
-    secretKey: '/{boardId}/secret-key'
-  },
+
   routine: {
     baseUrl: '/routines',
     routines: '',

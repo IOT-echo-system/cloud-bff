@@ -1,4 +1,5 @@
 export * from './authController'
+export * from './masterController'
 export * from './userController'
 export * from './premisesController'
 export * from './zoneController'
