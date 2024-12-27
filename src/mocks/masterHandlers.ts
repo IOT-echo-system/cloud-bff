@@ -23,10 +23,9 @@ export const masterHandlers = [
 
   http.get(`${baseUrl}/locations/:location`, () => {
     return HttpResponse.json<LocationResponse>({
-      pincode: '226004',
+      pincode: 226004,
       district: 'Lucknow',
-      state: 'Uttar pradesh',
-      city: 'Lucknow'
+      state: 'Uttar pradesh'
     })
   })
 ]
