@@ -1,13 +1,21 @@
 import { http, HttpResponse } from 'msw'
 import { apiConfig } from '../config/apiConfig'
-import type { BoardResponse } from '../typing/board'
+import type { Board } from '../typing/board'
 
 const boardConfig = apiConfig.board
 
-const boards: BoardResponse[] = [
+export const boards: Board[] = [
   {
     boardId: '0000001',
     name: 'Board 1',
+    premisesId: '00001',
+    createdBy: '000001',
+    type: 'ESP32',
+    createdAt: new Date(2024, 1, 1, 1, 1)
+  },
+  {
+    boardId: '0000002',
+    name: 'Board 2',
     premisesId: '00001',
     createdBy: '000001',
     type: 'ESP32',
@@ -18,6 +26,6 @@ const boards: BoardResponse[] = [
 export const boardsHandlers = [
   // Get Policies
   http.post(`${boardConfig.baseUrl}${boardConfig.boards}`, () => {
-    return HttpResponse.json<BoardResponse>(boards[0])
+    return HttpResponse.json<Board>(boards[0])
   })
 ]

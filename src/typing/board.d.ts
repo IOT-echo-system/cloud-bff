@@ -1,4 +1,4 @@
-export type BoardResponse = {
+export type Board = {
   boardId: string
   premisesId: string
   name: string

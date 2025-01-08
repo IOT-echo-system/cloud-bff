@@ -27,11 +27,8 @@ export const apiConfig = {
   premises: {
     baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
     premises: '/premises',
-    premisesDetails: '/premises/{premisesId}'
-  },
-  zone: {
-    baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
-    zones: '/zones'
+    premisesDetails: '/premises/{premisesId}',
+    zones: '/premises/{premisesId}/zones'
   },
   master: {
     baseUrl: process.env.MASTER_DATA_SERVICE_BASE_URL ?? 'http://localhost:9005',
@@ -40,7 +37,7 @@ export const apiConfig = {
   },
   board: {
     baseUrl: process.env.DEVICE_SERVICE_BASE_URL ?? 'http://localhost:9006',
-    boards: '/boards'
+    boards: '/premises/{premisesId}/boards'
   },
   role: {
     baseUrl: '/roles',

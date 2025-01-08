@@ -4,16 +4,7 @@ import type { BoardsResponse, LocationResponse } from '../typing/master'
 
 const baseUrl = apiConfig.master.baseUrl
 
-const boards: BoardsResponse[] = [
-  {
-    name: 'ESP-32',
-    type: 'ESP-32'
-  },
-  {
-    name: 'ESP8266',
-    type: 'ESP8266'
-  }
-]
+const boards: BoardsResponse[] = [{ name: 'ESP-32' }, { name: 'ESP8266' }]
 
 export const masterHandlers = [
   // get boards from master

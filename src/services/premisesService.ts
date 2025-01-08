@@ -1,7 +1,9 @@
 import { apiConfig } from '../config/apiConfig'
 import type { Request } from 'express'
-import type { Premises } from '../typing/premises'
+import type { Premises, PremisesDetails } from '../typing/premises'
 import WebClient from 'web-client-starter'
+import { zoneService } from './zoneService'
+import { boardService } from './boardService'
 
 const premisesConfig = apiConfig.premises
 
@@ -23,13 +25,25 @@ export const premisesService = {
     })
   },
 
-  getPremisesDetails(request: Request): Promise<Premises> {
-    return WebClient.get<Premises>({
-      baseUrl: premisesConfig.baseUrl,
-      path: premisesConfig.premisesDetails,
-      headers: request.headers as Record<string, string>,
-      uriVariables: request.params
-    })
+  async getPremisesDetails(request: Request): Promise<PremisesDetails> {
+    const [premises, zones, boards] = await Promise.all([
+      WebClient.get<Premises>({
+        baseUrl: premisesConfig.baseUrl,
+        path: premisesConfig.premisesDetails,
+        headers: request.headers as Record<string, string>,
+        uriVariables: request.params
+      }),
+      zoneService.getZonesByPremises(request),
+      boardService.getBoards(request)
+    ])
+
+    return {
+      ...premises,
+      zones,
+      zoneIds: zones.map(zone => zone.zoneId),
+      boards,
+      boardIds: boards.map(board => board.boardId)
+    }
   },
 
   updatePremisesDetails(request: Request): Promise<Premises> {

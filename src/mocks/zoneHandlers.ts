@@ -2,9 +2,9 @@ import { http, HttpResponse } from 'msw'
 import { apiConfig } from '../config/apiConfig'
 import type { Zone } from '../typing/zone'
 
-const baseUrl = apiConfig.zone.baseUrl
+const baseUrl = apiConfig.premises.baseUrl
 
-const zones: Zone[] = [
+export const zones: Zone[] = [
   {
     premisesId: '0001',
     name: 'Guard room',
@@ -14,7 +14,7 @@ const zones: Zone[] = [
   {
     premisesId: '0001',
     name: 'Kitchen',
-    zoneId: '0000003',
+    zoneId: '0000002',
     createdAt: new Date(2024, 1, 1, 1, 1)
   },
   {
