@@ -25,7 +25,11 @@ export const boards: Board[] = [
 
 export const boardsHandlers = [
   // Get Policies
-  http.post(`${boardConfig.baseUrl}${boardConfig.boards}`, () => {
+  http.post(`${boardConfig.baseUrl}/premises/:premisesId/boards`, () => {
     return HttpResponse.json<Board>(boards[0])
+  }),
+
+  http.get(`${boardConfig.baseUrl}/premises/:premisesId/boards`, () => {
+    return HttpResponse.json<Board[]>(boards)
   })
 ]

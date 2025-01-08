@@ -1,8 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import { apiConfig } from '../config/apiConfig'
-import type { Premises, PremisesDetails } from '../typing/premises'
-import { zones } from './zoneHandlers'
-import { boards } from './boardsHandlers'
+import type { Premises } from '../typing/premises'
 
 const baseUrl = apiConfig.premises.baseUrl
 
@@ -97,13 +95,7 @@ export const premisesHandlers = [
     const { premisesId } = params
     const currentPremises = premises.find(prem => prem.premisesId === premisesId)
     if (currentPremises) {
-      return HttpResponse.json<PremisesDetails>({
-        ...currentPremises,
-        zoneIds: ['0000001', '0000002', '0000003', '0000004'],
-        boardIds: ['0000001', '0000002'],
-        zones,
-        boards
-      })
+      return HttpResponse.json<Premises>(currentPremises)
     }
     return new HttpResponse(JSON.stringify({ errorCode: 'IOT-4001', message: 'Premises not found' }), {
       status: 404,

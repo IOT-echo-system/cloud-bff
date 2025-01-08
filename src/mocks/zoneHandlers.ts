@@ -33,7 +33,11 @@ export const zones: Zone[] = [
 
 export const zoneHandlers = [
   // Add premises
-  http.post(`${baseUrl}/zones`, () => {
+  http.post(`${baseUrl}/premises/:premisesId/zones`, () => {
     return HttpResponse.json<Zone>(zones[0])
+  }),
+
+  http.get(`${baseUrl}/premises/:premisesId/zones`, () => {
+    return HttpResponse.json<Zone[]>(zones)
   })
 ]
