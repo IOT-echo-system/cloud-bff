@@ -34,7 +34,7 @@ export const premisesService = {
         uriVariables: request.params
       }),
       zoneService.getZonesByPremises(request),
-      boardService.getBoards(request)
+      boardService.getBoardsByPremises(request)
     ])
 
     return {

@@ -3,11 +3,11 @@ import type { Request } from 'express'
 import type { Board } from '../typing/board'
 
 export const boardController = {
-  getBoards(request: Request): Promise<Board[]> {
-    return boardService.getBoards(request)
-  },
-
   addBoard(request: Request): Promise<Board> {
     return boardService.createNewBoard(request)
+  },
+
+  getBoardsByPremises(request: Request): Promise<Board[]> {
+    return boardService.getBoardsByPremises(request)
   }
 } as const
