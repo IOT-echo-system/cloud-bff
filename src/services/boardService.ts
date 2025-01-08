@@ -20,7 +20,8 @@ export const boardService = {
       baseUrl: boardConfig.baseUrl,
       path: boardConfig.boards,
       headers: request.headers as Record<string, string>,
-      body: request.body as Record<string, string>
+      body: request.body as Record<string, string>,
+      uriVariables: request.params
     })
   }
 } as const
