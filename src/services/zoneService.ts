@@ -23,5 +23,14 @@ export const zoneService = {
       headers: request.headers as Record<string, string>,
       uriVariables: request.params
     })
+  },
+
+  updateZoneName(request: Request): Promise<Zone> {
+    return WebClient.put<Zone>({
+      baseUrl: zoneConfig.baseUrl,
+      path: zoneConfig.updateZoneName,
+      headers: request.headers as Record<string, string>,
+      uriVariables: request.params
+    })
   }
 } as const

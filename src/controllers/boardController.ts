@@ -9,5 +9,9 @@ export const boardController = {
 
   getBoardsByPremises(request: Request): Promise<Board[]> {
     return boardService.getBoardsByPremises(request)
+  },
+
+  updateBoardName(request: Request): Promise<Board> {
+    return boardService.updateBoardName(request)
   }
 } as const

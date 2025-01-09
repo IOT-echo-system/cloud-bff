@@ -9,5 +9,9 @@ export const zoneController = {
 
   getZonesByPremises(request: Request): Promise<Zone[]> {
     return zoneService.getZonesByPremises(request)
+  },
+
+  updateZoneName(request: Request): Promise<Zone> {
+    return zoneService.updateZoneName(request)
   }
 } as const

@@ -28,7 +28,8 @@ export const apiConfig = {
     baseUrl: process.env.PREMISES_SERVICE_BASE_URL ?? 'http://localhost:9004',
     premises: '/premises',
     premisesDetails: '/premises/{premisesId}',
-    zones: '/premises/{premisesId}/zones'
+    zones: '/premises/{premisesId}/zones',
+    updateZoneName: '/premises/{premisesId}/zones/{zoneId}/name'
   },
   master: {
     baseUrl: process.env.MASTER_DATA_SERVICE_BASE_URL ?? 'http://localhost:9005',
@@ -37,7 +38,8 @@ export const apiConfig = {
   },
   board: {
     baseUrl: process.env.DEVICE_SERVICE_BASE_URL ?? 'http://localhost:9006',
-    boards: '/premises/{premisesId}/boards'
+    boards: '/premises/{premisesId}/boards',
+    updateName: '/premises/{premisesId}/boards/{boardId}/name'
   },
   role: {
     baseUrl: '/roles',

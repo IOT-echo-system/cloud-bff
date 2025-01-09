@@ -39,5 +39,9 @@ export const zoneHandlers = [
 
   http.get(`${baseUrl}/premises/:premisesId/zones`, () => {
     return HttpResponse.json<Zone[]>(zones)
+  }),
+
+  http.put(`${baseUrl}/premises/:premisesId/zones/:zoneId/name`, () => {
+    return HttpResponse.json<Zone>({ ...zones[0], name: 'Updated name' })
   })
 ]
