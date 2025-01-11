@@ -4,8 +4,8 @@ import { zoneController } from '../controllers'
 
 const zoneRouter = express.Router()
 
-zoneRouter.post('/:premisesId/zones', handleRequest(zoneController.addZone))
-zoneRouter.get('/:premisesId/zones', handleRequest(zoneController.getZonesByPremises))
-zoneRouter.put('/:premisesId/zones/:zoneId/name', handleRequest(zoneController.updateZoneName))
+zoneRouter.post('', handleRequest(zoneController.addZone))
+zoneRouter.get('', handleRequest(zoneController.getZonesByPremises))
+zoneRouter.put('/:zoneId/name', handleRequest(zoneController.updateZoneName))
 
 export default zoneRouter
