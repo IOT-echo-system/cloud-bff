@@ -32,12 +32,12 @@ export const apiConfig = {
     updateZoneName: '/premises/{premisesId}/zones/{zoneId}/name'
   },
   master: {
-    baseUrl: process.env.MASTER_DATA_SERVICE_BASE_URL ?? 'http://localhost:9005',
+    baseUrl: process.env.MASTER_DATA_SERVICE_BASE_URL ?? 'http://localhost:9006',
     boards: '/boards',
     locations: '/locations/{pincode}'
   },
   board: {
-    baseUrl: process.env.DEVICE_SERVICE_BASE_URL ?? 'http://localhost:9006',
+    baseUrl: process.env.FEED_SERVICE_BASE_URL ?? 'http://localhost:9005',
     boards: '/premises/{premisesId}/boards',
     updateName: '/premises/{premisesId}/boards/{boardId}/name'
   },
