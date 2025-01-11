@@ -15,7 +15,8 @@ const premises: Premises[] = [
       district: 'Lucknow',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'OWNER' }
   },
   {
     premisesId: '0002',
@@ -27,7 +28,8 @@ const premises: Premises[] = [
       district: 'Lucknow',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'ADMIN' }
   },
   {
     premisesId: '0003',
@@ -39,7 +41,8 @@ const premises: Premises[] = [
       district: 'District',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'USER' }
   },
   {
     premisesId: '0004',
@@ -51,7 +54,8 @@ const premises: Premises[] = [
       district: 'District',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'OWNER' }
   },
   {
     premisesId: '0005',
@@ -63,7 +67,8 @@ const premises: Premises[] = [
       district: 'District',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'ADMIN' }
   },
   {
     premisesId: '0006',
@@ -75,7 +80,8 @@ const premises: Premises[] = [
       district: 'District',
       pincode: 123456
     },
-    createdAt: new Date(2024, 1, 1, 1, 1)
+    createdAt: new Date(2024, 1, 1, 1, 1),
+    user: { userId: '00001', role: 'USER' }
   }
 ]
 
