@@ -23,31 +23,13 @@ export const premisesService = {
     })
   },
 
-  async getPremisesDetails(request: Request): Promise<Premises> {
+  getPremisesDetails(request: Request): Promise<Premises> {
     return WebClient.get<Premises>({
       baseUrl: premisesConfig.baseUrl,
       path: premisesConfig.premisesDetails,
       headers: request.headers as Record<string, string>,
       uriVariables: request.params
     })
-    // const [premises, zones, boards] = await Promise.all([
-    //   WebClient.get<Premises>({
-    //     baseUrl: premisesConfig.baseUrl,
-    //     path: premisesConfig.premisesDetails,
-    //     headers: request.headers as Record<string, string>,
-    //     uriVariables: request.params
-    //   }),
-    //   zoneService.getZonesByPremises(request, request.params.premisesId),
-    //   boardService.getBoardsByPremises(request, request.params.premisesId)
-    // ])
-    //
-    // return {
-    //   ...premises,
-    //   zones,
-    //   zoneIds: zones.map(zone => zone.zoneId),
-    //   boards,
-    //   boardIds: boards.map(board => board.boardId)
-    // }
   },
 
   updatePremisesDetails(request: Request): Promise<Premises> {
