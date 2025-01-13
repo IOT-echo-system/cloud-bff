@@ -11,17 +11,16 @@ export const zoneService = {
       baseUrl: zoneConfig.baseUrl,
       path: zoneConfig.zones,
       headers: request.headers as Record<string, string>,
-      body: request.body as Record<string, string>,
-      uriVariables: request.params
+      body: request.body as Record<string, string>
     })
   },
 
-  getZonesByPremises(request: Request): Promise<Zone[]> {
+  getZonesByPremises(request: Request, premisesId?: string): Promise<Zone[]> {
+    const headers = premisesId ? { ...request.headers, 'x-premises-id': premisesId } : request.headers
     return WebClient.get<Zone[]>({
       baseUrl: zoneConfig.baseUrl,
       path: zoneConfig.zones,
-      headers: request.headers as Record<string, string>,
-      uriVariables: request.params
+      headers: headers as Record<string, string>
     })
   },
 

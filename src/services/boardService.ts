@@ -6,12 +6,12 @@ import WebClient from 'web-client-starter'
 const { board: boardConfig } = apiConfig
 
 export const boardService = {
-  getBoardsByPremises(request: Request): Promise<Board[]> {
+  getBoardsByPremises(request: Request, premisesId?: string): Promise<Board[]> {
+    const headers = premisesId ? { ...request.headers, 'x-premises-id': premisesId } : request.headers
     return WebClient.get<Board[]>({
       baseUrl: boardConfig.baseUrl,
       path: boardConfig.boards,
-      headers: request.headers as Record<string, string>,
-      uriVariables: request.params
+      headers: headers as Record<string, string>
     })
   },
 

@@ -33,8 +33,8 @@ export const premisesService = {
         headers: request.headers as Record<string, string>,
         uriVariables: request.params
       }),
-      zoneService.getZonesByPremises(request),
-      boardService.getBoardsByPremises(request)
+      zoneService.getZonesByPremises(request, request.params.premisesId),
+      boardService.getBoardsByPremises(request, request.params.premisesId)
     ])
 
     return {
