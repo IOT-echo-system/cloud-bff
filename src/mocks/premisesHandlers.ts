@@ -1,6 +1,8 @@
 import { http, HttpResponse } from 'msw'
 import { apiConfig } from '../config/apiConfig'
 import type { Premises } from '../typing/premises'
+import { zones } from './zoneHandlers'
+import { boards } from './boardsHandlers'
 
 const baseUrl = apiConfig.premises.baseUrl
 
@@ -16,7 +18,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'OWNER' }
+    user: { userId: '00001', role: 'OWNER' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   },
   {
     premisesId: '0002',
@@ -29,7 +33,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'ADMIN' }
+    user: { userId: '00001', role: 'ADMIN' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   },
   {
     premisesId: '0003',
@@ -42,7 +48,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'USER' }
+    user: { userId: '00001', role: 'USER' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   },
   {
     premisesId: '0004',
@@ -55,7 +63,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'OWNER' }
+    user: { userId: '00001', role: 'OWNER' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   },
   {
     premisesId: '0005',
@@ -68,7 +78,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'ADMIN' }
+    user: { userId: '00001', role: 'ADMIN' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   },
   {
     premisesId: '0006',
@@ -81,7 +93,9 @@ const premises: Premises[] = [
       pincode: 123456
     },
     createdAt: new Date(2024, 1, 1, 1, 1),
-    user: { userId: '00001', role: 'USER' }
+    user: { userId: '00001', role: 'USER' },
+    zones: zones.map(zone => zone.zoneId),
+    boards: boards.map(board => board.boardId)
   }
 ]
 
