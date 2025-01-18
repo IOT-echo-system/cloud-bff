@@ -19,7 +19,11 @@ export const authHandlers = [
       { policyId: '0009', name: 'DEVICE:CREATE' },
       { policyId: '0010', name: 'DEVICE:READ' },
       { policyId: '0011', name: 'DEVICE:UPDATE' },
-      { policyId: '0012', name: 'DEVICE:DELETE' }
+      { policyId: '0012', name: 'DEVICE:DELETE' },
+      { policyId: '0013', name: 'FEED:CREATE' },
+      { policyId: '0014', name: 'FEED:READ' },
+      { policyId: '0015', name: 'FEED:UPDATE' },
+      { policyId: '0016', name: 'FEED:DELETE' }
     ])
   })
 ]

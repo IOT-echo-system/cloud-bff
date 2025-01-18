@@ -24,15 +24,15 @@ export const boards: Board[] = [
 ]
 
 export const boardsHandlers = [
-  http.post(`${boardConfig.baseUrl}/premises/:premisesId/boards`, () => {
+  http.post(`${boardConfig.baseUrl}/boards`, () => {
     return HttpResponse.json<Board>(boards[0])
   }),
 
-  http.get(`${boardConfig.baseUrl}/premises/:premisesId/boards`, () => {
+  http.get(`${boardConfig.baseUrl}/boards`, () => {
     return HttpResponse.json<Board[]>(boards)
   }),
 
-  http.put(`${boardConfig.baseUrl}/premises/:premisesId/boards/:boardId/name`, () => {
+  http.put(`${boardConfig.baseUrl}/boards/:boardId/name`, () => {
     return HttpResponse.json<Board>({ ...boards[0], name: 'Updated name' })
   })
 ]

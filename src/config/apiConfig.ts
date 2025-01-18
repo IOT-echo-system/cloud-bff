@@ -41,6 +41,11 @@ export const apiConfig = {
     boards: '/boards',
     updateName: '/boards/{boardId}/name'
   },
+  feed: {
+    baseUrl: process.env.FEED_SERVICE_BASE_URL ?? 'http://localhost:9005',
+    feeds: '/feeds',
+    updateName: '/feeds/{feedId}/name'
+  },
   role: {
     baseUrl: '/roles',
     roles: ''
@@ -49,13 +54,11 @@ export const apiConfig = {
     baseUrl: '/policies',
     policies: ''
   },
-
   routine: {
     baseUrl: '/routines',
     routines: '',
     name: '/{routineId}/name'
   },
-
   widgets: {
     baseUrl: '/widgets',
     widgets: '',

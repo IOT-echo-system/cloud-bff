@@ -5,6 +5,7 @@ import { premisesHandlers } from './premisesHandlers'
 import { zoneHandlers } from './zoneHandlers'
 import { masterHandlers } from './masterHandlers'
 import { boardsHandlers } from './boardsHandlers'
+import { feedsHandlers } from './feedsHandlers'
 
 export const mockServer = setupServer(
   ...authHandlers,
@@ -12,5 +13,6 @@ export const mockServer = setupServer(
   ...premisesHandlers,
   ...zoneHandlers,
   ...masterHandlers,
-  ...boardsHandlers
+  ...boardsHandlers,
+  ...feedsHandlers
 )
