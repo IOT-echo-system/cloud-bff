@@ -28,7 +28,8 @@ export const zoneService = {
       baseUrl: zoneConfig.baseUrl,
       path: zoneConfig.updateZoneName,
       headers: request.headers as Record<string, string>,
-      uriVariables: request.params
+      uriVariables: request.params,
+      body: request.body as Record<string, string>
     })
   }
 } as const
