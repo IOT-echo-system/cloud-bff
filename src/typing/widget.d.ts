@@ -1,11 +1,10 @@
-type WidgetType = 'INVOICE' | 'COLLECTION_OF_BUTTONS' | 'LEVEL_MONITOR'
-
 export type Widget = {
-  projectId: string
+  config: Record<string, unknown>
+  name: string
   boardId: string
+  premisesId: string
   widgetId: string
-  widgetType: WidgetType
-  title: string
-} & Record<string, unknown>
-
-type WidgetTypeWithWidgets = { widgetType: WidgetType; widgets: Widget[] }
+  type: string
+  feedId: string
+  zoneId: string
+}

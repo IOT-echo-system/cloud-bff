@@ -20,7 +20,7 @@ router.use('/premises', premisesRouter)
 router.use('/zones', zoneRouter)
 router.use('/boards', boardRouter)
 router.use('/feeds', feedRouter)
-router.use('/routines', routineRouter)
 router.use('/widgets', widgetRouter)
+router.use('/routines', routineRouter)
 
 export default router

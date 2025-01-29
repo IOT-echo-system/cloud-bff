@@ -32,6 +32,16 @@ class FeedService_ {
       body: request.body as Record<string, string>
     })
   }
+
+  updateValue(request: Request): Promise<Feed> {
+    return WebClient.put<Feed>({
+      baseUrl: this.feedConfig.baseUrl,
+      path: this.feedConfig.updateValue,
+      headers: request.headers as Record<string, string>,
+      uriVariables: request.params,
+      body: request.body as Record<string, string>
+    })
+  }
 }
 
 export const FeedService = new FeedService_()

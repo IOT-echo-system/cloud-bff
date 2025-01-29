@@ -13,5 +13,9 @@ export const feedController = {
 
   updateName(request: Request): Promise<Feed> {
     return FeedService.updateName(request)
+  },
+
+  updateValue(request: Request): Promise<Feed> {
+    return FeedService.updateValue(request)
   }
 } as const

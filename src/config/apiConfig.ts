@@ -44,24 +44,17 @@ export const apiConfig = {
   feed: {
     baseUrl: process.env.FEED_SERVICE_BASE_URL ?? 'http://localhost:9005',
     feeds: '/feeds',
-    updateName: '/feeds/{feedId}/name'
+    updateName: '/feeds/{feedId}/name',
+    updateValue: '/feeds/{feedId}/value'
   },
-  role: {
-    baseUrl: '/roles',
-    roles: ''
-  },
-  policy: {
-    baseUrl: '/policies',
-    policies: ''
+  widgets: {
+    baseUrl: process.env.FEED_SERVICE_BASE_URL ?? 'http://localhost:9005',
+    widgets: '/widgets',
+    updateTitle: '/{widgetId}/title'
   },
   routine: {
     baseUrl: '/routines',
     routines: '',
     name: '/{routineId}/name'
-  },
-  widgets: {
-    baseUrl: '/widgets',
-    widgets: '',
-    updateTitle: '/{widgetId}/title'
   }
 } as const

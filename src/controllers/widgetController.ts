@@ -9,6 +9,10 @@ export const widgetController = {
     return WidgetService.addWidget(request)
   },
 
+  getWidgets(request: Request): Promise<Widget[]> {
+    return WidgetService.getWidgets(request)
+  },
+
   updateTitle(request: Request): Promise<Widget> {
     return WidgetService.updateTitle(request)
   },
